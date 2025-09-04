@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hydro Rubber Bethlehem/Eastern-Freestate - Professional Waterproofing Services</title>
+    <meta name="description" content="Professional waterproofing and rubberising services in Bethlehem and Eastern Free State. 10-year warranty on all work. Contact us for a free quote today!">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgb(4, 57, 142);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+        .navdiv {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo a {
+            font-size: 28px;
+            font-weight: 600;
+            color: white;
+            display: block;
+            line-height: 1.2;
+        }
+
+        .logo b {
+            color: rgb(57, 198, 14);
+        }
+
+        .logo i {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu li a {
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu li a:hover {
+            background-color: rgba(255,255,255,0.1);
+            color: rgb(57, 198, 14);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Landing Section */
+        .landing-section {
+            height: 100vh;
+            background: linear-gradient(135deg, rgb(29, 29, 29), rgb(4, 57, 142));
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .animated-text-container h1 {
+            display: flex;
+            gap: 5px;
+            font-size: 4rem;
+            margin-bottom: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .letter {
+            display: inline-block;
+            animation: ripple 2s ease-in-out infinite;
+            color: rgb(4, 57, 142);
+        }
+
+        .letter.green {
+            color: rgb(57, 198, 14);
+        }
+
+        .letter:nth-child(1) { animation-delay: 0s; }
+        .letter:nth-child(2) { animation-delay: 0.1s; }
+        .letter:nth-child(3) { animation-delay: 0.2s; }
+        .letter:nth-child(4) { animation-delay: 0.3s; }
+        .letter:nth-child(5) { animation-delay: 0.4s; }
+        .letter:nth-child(6) { animation-delay: 0.5s; }
+        .letter:nth-child(7) { animation-delay: 0.6s; }
+        .letter:nth-child(8) { animation-delay: 0.7s; }
+        .letter:nth-child(9) { animation-delay: 0.8s; }
+        .letter:nth-child(10) { animation-delay: 0.9s; }
+        .letter:nth-child(11) { animation-delay: 1.0s; }
+
+        @keyframes ripple {
+            0%, 100% { 
+                transform: translateY(0) scale(1); 
+                color: rgb(57, 198, 14);
+            }
+            50% { 
+                transform: translateY(-15px) scale(1.2); 
+                color: white;
+            }
+        }
+
+        .action-button {
+            background: rgb(4, 57, 142);
+            color: white;
+            border: 2px solid rgb(57, 198, 14);
+            border-radius: 25px;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .action-button:hover {
+            background: rgb(57, 198, 14);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(57, 198, 14, 0.3);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 80px;
+        }
+
+        .hero-section {
+            background: linear-gradient(rgba(4, 57, 142, 0.8), rgba(4, 57, 142, 0.8)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%234fb3d9" width="1200" height="600"/><path fill="%23057bc7" d="M0 300L50 325C100 350 200 400 300 400C400 400 500 350 600 325C700 300 800 300 900 325C1000 350 1100 400 1150 425L1200 450V600H1150C1100 600 1000 600 900 600C800 600 700 600 600 600C500 600 400 600 300 600C200 600 100 600 50 600H0V300Z"/></svg>') center/cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero-content h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* Services Section */
+        .services-section {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            color: rgb(4, 57, 142);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: rgb(57, 198, 14);
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            color: rgb(4, 57, 142);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            color: rgb(4, 57, 142);
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .warranty-highlight {
+            background: rgb(57, 198, 14);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, rgb(4, 57, 142), rgb(57, 198, 14));
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            background: rgba(255,255,255,0.9);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: rgb(57, 198, 14);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: rgb(47, 168, 4);
+            transform: translateY(-2px);
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .contact-item strong {
+            color: rgb(57, 198, 14);
+        }
+
+        /* Footer */
+        .footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .footer p {
+            margin-bottom: 10px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: rgb(4, 57, 142);
+                flex-direction: column;
+                padding: 20px;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .animated-text-container h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .animated-text-container h1 {
+                font-size: 2rem;
+            }
+
+            .letter {
+                margin: 0 2px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navdiv">
+            <div class="logo">
+                <a href="#home">
+                    Hydro <b>Rubber</b><br>
+                    <i>Bethlehem/Eastern-Freestate</i>
+                </a>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Landing Section -->
+    <section id="home" class="landing-section">
+        <div class="animated-text-container">
+            <h1>
+                <span class="letter">H</span>
+                <span class="letter">y</span>
+                <span class="letter">d</span>
+                <span class="letter">r</span>
+                <span class="letter">o</span>
+                <span class="letter green">R</span>
+                <span class="letter green">u</span>
+                <span class="letter green">b</span>
+                <span class="letter green">b</span>
+                <span class="letter green">e</span>
+                <span class="letter green">r</span>
+            </h1>
+            <button class="action-button" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">
+                Explore Services
+            </button>
+        </div>
+        <div class="scroll-indicator">
+            <div style="font-size: 24px;">↓</div>
+            <div>Scroll Down</div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h2>Professional Waterproofing Solutions</h2>
+                <p>Here is where you'll find the best solution for waterproofing and rubberising your roof, wall, dam, silo, reservoir, or even your shower!</p>
+                <button class="action-button" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+                    Get Free Quote
+                </button>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services-section">
+            <div class="container">
+                <h2 class="section-title">Our Services</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">🏠</div>
+                        <h3>Roof Waterproofing</h3>
+                        <p>Complete roof waterproofing solutions using advanced rubber membrane technology. Protects against all weather conditions with long-lasting results.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🧱</div>
+                        <h3>Wall Waterproofing</h3>
+                        <p>Professional wall waterproofing to prevent moisture damage, dampness, and structural deterioration. Suitable for interior and exterior applications.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🚰</div>
+                        <h3>Dam & Reservoir Lining</h3>
+                        <p>Specialized waterproofing for dams, reservoirs, and water storage facilities. Food-grade safe materials available for potable water applications.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🏭</div>
+                        <h3>Silo Waterproofing</h3>
+                        <p>Industrial-grade waterproofing for silos and storage facilities. Chemical-resistant coatings available for specialized storage requirements.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🚿</div>
+                        <h3>Bathroom Waterproofing</h3>
+                        <p>Complete shower and bathroom waterproofing solutions. Prevents water damage and mold growth with guaranteed leak-proof results.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">🔧</div>
+                        <h3>Maintenance & Repairs</h3>
+                        <p>Half-term maintenance and emergency repairs. Our 10-year warranty 'covers' you, with no unexpected costs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Why Choose Hydro Rubber?</h2>
+                        <p>With years of experience serving the Bethlehem and Eastern Free State region, we are your trusted partner for all waterproofing needs. Our team of certified professionals uses only the highest quality materials and proven techniques.</p>
+                        <p>We pride ourselves on transparent pricing, reliable service, and exceptional results. Every project is backed by our comprehensive warranty and ongoing support.</p>
+                        <div class="warranty-highlight">
+                            ✓ 10-Year Service Plan & Warranty<br>
+                            ✓ 100% Free Quotes<br>
+                            ✓ No Hidden Costs<br>
+                            ✓ Emergency Repairs
+                        </div>
+                        <p>Contact us now for a 100% free quote. Pay fair prices and get your 10-year warranty. If there is damage, we can fix it - with no surprises and no scary prices!</p>
+                    </div>
+                    <div class="about-image">
+                        <div style="background: linear-gradient(45deg, rgb(4, 57, 142), rgb(57, 198, 14)); height: 400px; border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px; text-align: center;">
+                            Professional<br>Waterproofing<br>Since 2010<br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title" style="color: white; text-align: center; margin-bottom: 50px;">Get Your Free Quote</h2>
+                <div class="contact-content">
+                    <div class="contact-form">
+                        <h3>Request a Quote</h3>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="service">Service Needed</label>
+                                <input type="text" id="service" name="service" placeholder="e.g., Roof waterproofing">
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Project Description</label>
+                                <textarea id="message" name="message" placeholder="Tell us about your waterproofing needs..."></textarea>
+                            </div>
+                            <button type="submit" class="submit-btn">Send Request</button>
+                        </form>
+                    </div>
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        <div class="contact-item">
+                            <strong>📍 Service Areas:</strong><br>
+                            Bethlehem & Eastern Free State Region
+                        </div>
+                        <div class="contact-item">
+                            <strong>📞 Phone:</strong><br>
+                                071 786 6962-
+                            Call us for immediate assistance
+                        </div>
+                        <div class="contact-item">
+                            <strong>📧 Email:</strong><br>
+                            hydrorubber.bethlys@gmail.com
+                        </div>
+                        <div class="contact-item">
+                            <strong>🕒 Business Hours:</strong><br>
+                            Monday - Friday: 7:00 AM - 5:00 PM<br>
+                        </div>
+                        <div class="contact-item">
+                            <strong>🎯 Our Promise:</strong><br>
+                            • Free, no-obligation quotes<br>
+                            • 10-year comprehensive warranty<br>
+                            • Professional, certified technicians<br>
+                            • Transparent, competitive pricing
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Hydro Rubber Bethlehem/Eastern-Freestate. All rights reserved.</p>
+            <p>Professional waterproofing services with 10-year warranty coverage.</p>
+            <p><i>Disclaimer:</i> Please note that any work done will require additional fees payable by the client<br/>
+                                    even under warranty to cover labor costs.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            const navMenu = document.getElementById('navMenu');
+            navMenu.classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu if open
+                document.getElementById('navMenu').classList.remove('active');
+            });
+        });
+
+        // Contact form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Simple validation
+            if (!data.name || !data.email || !data.phone) {
+                alert('Please fill in all required fields.');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(data.email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            
+            // Create email content
+            const businessEmail = 'hydrorubber.bethlys@gmail.com'; // CHANGE THIS TO YOUR EMAIL ADDRESS
+            const subject = encodeURIComponent('Waterproofing Quote Request - ' + data.name);
+            
+            const emailBody = encodeURIComponent(`
+WATERPROOFING QUOTE REQUEST
+=============================
+
+Customer Information:
+---------------------
+Name: ${data.name}
+Email: ${data.email}
+Phone: ${data.phone}
+Service Needed: ${data.service || 'Not specified'}
+
+Project Description:
+--------------------
+${data.message || 'No additional details provided.'}
+
+Request Details:
+----------------
+Date Submitted: ${new Date().toLocaleString()}
+Source: Hydro Rubber Website Contact Form
+
+Please contact this customer within 24 hours to provide a free quote.
+
+Best regards,
+Hydro Rubber Website System
+            `);
+            
+            // Create mailto link
+            const mailtoLink = `mailto:${businessEmail}?subject=${subject}&body=${emailBody}`;
+            
+            // Open email client
+            window.location.href = mailtoLink;
+            
+            // Show success message
+            alert('Your email client will open with your quote request. Please send the email to complete your request.');
+            
+            // Reset form after short delay to allow email client to open
+            setTimeout(() => {
+                this.reset();
+            }, 1000);
+        });
+
+        // Add scroll effect to navbar
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(4, 57, 142, 0.95)';
+                navbar.style.backdropFilter = 'blur(10px)';
+            } else {
+                navbar.style.background = 'rgb(4, 57, 142)';
+                navbar.style.backdropFilter = 'none';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe service cards for animation
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
