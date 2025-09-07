@@ -1,4 +1,43 @@
-<!DOCTYPE html>
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -47,6 +86,10 @@
         }
 
         .logo b {
+            color: rgb(57, 198, 14);
+        }
+
+        .logo .green-text {
             color: rgb(57, 198, 14);
         }
 
@@ -106,35 +149,7 @@
 
         .letter {
             display: inline-block;
-            animation: ripple 2s ease-in-out infinite;
-            color: rgb(4, 57, 142);
-        }
-
-        .letter.green {
             color: rgb(57, 198, 14);
-        }
-
-        .letter:nth-child(1) { animation-delay: 0s; }
-        .letter:nth-child(2) { animation-delay: 0.1s; }
-        .letter:nth-child(3) { animation-delay: 0.2s; }
-        .letter:nth-child(4) { animation-delay: 0.3s; }
-        .letter:nth-child(5) { animation-delay: 0.4s; }
-        .letter:nth-child(6) { animation-delay: 0.5s; }
-        .letter:nth-child(7) { animation-delay: 0.6s; }
-        .letter:nth-child(8) { animation-delay: 0.7s; }
-        .letter:nth-child(9) { animation-delay: 0.8s; }
-        .letter:nth-child(10) { animation-delay: 0.9s; }
-        .letter:nth-child(11) { animation-delay: 1.0s; }
-
-        @keyframes ripple {
-            0%, 100% { 
-                transform: translateY(0) scale(1); 
-                color: rgb(57, 198, 14);
-            }
-            50% { 
-                transform: translateY(-15px) scale(1.2); 
-                color: white;
-            }
         }
 
         .action-button {
@@ -301,6 +316,7 @@
             padding: 40px;
             border-radius: 15px;
             backdrop-filter: blur(10px);
+            position: relative;
         }
 
         .form-group {
@@ -432,7 +448,7 @@
         <div class="navdiv">
             <div class="logo">
                 <a href="#home">
-                    Hydro <b>Rubber</b><br>
+                    <span class="green-text">Hydro</span> <b>Rubber</b><br>
                     <i>Bethlehem/Eastern-Freestate</i>
                 </a>
             </div>
@@ -455,12 +471,12 @@
                 <span class="letter">d</span>
                 <span class="letter">r</span>
                 <span class="letter">o</span>
-                <span class="letter green">R</span>
-                <span class="letter green">u</span>
-                <span class="letter green">b</span>
-                <span class="letter green">b</span>
-                <span class="letter green">e</span>
-                <span class="letter green">r</span>
+                <span class="letter">R</span>
+                <span class="letter">u</span>
+                <span class="letter">b</span>
+                <span class="letter">b</span>
+                <span class="letter">e</span>
+                <span class="letter">r</span>
             </h1>
             <button class="action-button" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">
                 Explore Services
@@ -588,8 +604,7 @@
                         </div>
                         <div class="contact-item">
                             <strong>📞 Phone:</strong><br>
-                                071 786 6962-
-                            Call us for immediate assistance
+                            071 786 6962 - Call us for immediate assistance
                         </div>
                         <div class="contact-item">
                             <strong>📧 Email:</strong><br>
@@ -615,10 +630,10 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2024 Hydro Rubber Bethlehem/Eastern-Freestate. All rights reserved.</p>
+            <p>&copy; 2025 Hydro Rubber Bethlehem/Eastern-Freestate. All rights reserved.</p>
             <p>Professional waterproofing services with 10-year warranty coverage.</p>
-            <p><i>Disclaimer:</i> Please note that any work done will require additional fees payable by the client<br/>
-                                    even under warranty to cover labor costs.</p>
+            <p><i>Disclaimer:</i> Please note that any work done will require additional fees payable by the client<br>
+            even under warranty to cover labor costs.</p>
         </div>
     </footer>
 
@@ -666,9 +681,12 @@
                 return;
             }
             
+            // Sanitize inputs to prevent injection
+            const sanitize = (str) => str.replace(/[<>&]/g, '');
+            
             // Create email content
-            const businessEmail = 'hydrorubber.bethlys@gmail.com'; // CHANGE THIS TO YOUR EMAIL ADDRESS
-            const subject = encodeURIComponent('Waterproofing Quote Request - ' + data.name);
+            const businessEmail = 'hydrorubber.bethlys@gmail.com';
+            const subject = encodeURIComponent('Waterproofing Quote Request - ' + sanitize(data.name));
             
             const emailBody = encodeURIComponent(`
 WATERPROOFING QUOTE REQUEST
@@ -676,14 +694,14 @@ WATERPROOFING QUOTE REQUEST
 
 Customer Information:
 ---------------------
-Name: ${data.name}
-Email: ${data.email}
-Phone: ${data.phone}
-Service Needed: ${data.service || 'Not specified'}
+Name: ${sanitize(data.name)}
+Email: ${sanitize(data.email)}
+Phone: ${sanitize(data.phone)}
+Service Needed: ${sanitize(data.service || 'Not specified')}
 
 Project Description:
 --------------------
-${data.message || 'No additional details provided.'}
+${sanitize(data.message || 'No additional details provided.')}
 
 Request Details:
 ----------------
@@ -696,19 +714,43 @@ Best regards,
 Hydro Rubber Website System
             `);
             
-            // Create mailto link
+            // Construct Gmail compose URL
+            const gmailComposeUrl = `https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&to=${businessEmail}&su=${subject}&body=${emailBody}`;
+            
+            // Create mailto link as fallback
             const mailtoLink = `mailto:${businessEmail}?subject=${subject}&body=${emailBody}`;
             
-            // Open email client
-            window.location.href = mailtoLink;
+            // Add inline confirmation message
+            const formContainer = document.querySelector('.contact-form');
+            let confirmationDiv = document.createElement('div');
+            confirmationDiv.style.cssText = 'color: #fff; background: rgba(57, 198, 14, 0.8); padding: 15px; border-radius: 8px; margin-top: 20px; text-align: center;';
+            confirmationDiv.textContent = 'Opening Gmail to send your request... Please log in if prompted and send the email.';
+            formContainer.appendChild(confirmationDiv);
             
-            // Show success message
-            alert('Your email client will open with your quote request. Please send the email to complete your request.');
+            // Try to open Gmail compose window
+            try {
+                const newWindow = window.open(gmailComposeUrl, '_blank');
+                
+                // Check if the window was blocked or failed to open
+                if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+                    confirmationDiv.textContent = 'Unable to open Gmail. Opening your default email client instead. Please send the email to complete your request.';
+                    setTimeout(() => {
+                        window.location.href = mailtoLink;
+                    }, 2000);
+                }
+            } catch (error) {
+                console.error('Error opening Gmail:', error);
+                confirmationDiv.textContent = 'An error occurred. Opening your default email client instead. Please send the email to complete your request.';
+                setTimeout(() => {
+                    window.location.href = mailtoLink;
+                }, 2000);
+            }
             
-            // Reset form after short delay to allow email client to open
+            // Reset form after short delay
             setTimeout(() => {
                 this.reset();
-            }, 1000);
+                confirmationDiv.remove();
+            }, 3000);
         });
 
         // Add scroll effect to navbar
